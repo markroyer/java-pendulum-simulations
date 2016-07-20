@@ -1,0 +1,132 @@
+/*
+Double spring pendulum based on Maxima code and notes from James Fastook's class
+on Simulations and Modeling (COS 515) and discussion with students in the class.
+
+*/
+
+depends([r1,theta1,r2,theta2],t)$
+
+x1: r1*sin(theta1)$
+y1: r1*cos(theta1)$
+x2: x1+r2*sin(theta2)$
+y2: y1+r2*cos(theta2)$
+
+x1dot: diff(x1,t)$
+y1dot: diff(y1,t)$
+x2dot: diff(x2,t)$
+y2dot: diff(y2,t)$
+
+L1: 1/2*m1*(x1dot^2+y1dot^2)+m1*g*y1-k1/2*(r1-r01)^2$ 
+L2: 1/2*m2*(x2dot^2+y2dot^2)+m2*g*y2-k2/2*(r2-r02)^2$
+
+L: L1+L2$
+L: ratsimp(L)$
+L: trigsimp(L)$
+
+remove([theta1,r2,theta2],dependency)$
+term1:diff(L,diff(r1,t))$
+term2:diff(L,r1)$
+depends([theta1,r2,theta2],t)$
+term1a:diff(term1,t)$
+eq1:term1a-term2$
+
+remove([r1,r2,theta2],dependency)$
+term1:diff(L,diff(theta1,t))$
+term2:diff(L,theta1)$
+depends([r1,r2,theta2],t)$
+term1a: diff(term1,t)$
+eq2: term1a-term2$
+
+remove([r1,theta1,theta2],dependency)$
+term1:diff(L,diff(r2,t))$
+term2: diff(L,r2)$
+depends([r1,theta1,theta2],t)$
+term1a:diff(term1,t)$
+eq3:term1a-term2$
+
+remove([r1,theta1,r2],dependency)$
+term1:diff(L,diff(theta2,t))$
+term2:diff(L,theta2)$
+depends([r1,theta1,r2],t)$
+term1a:diff(term1,t)$
+eq4:term1a-term2$
+
+eqs:solve([eq1,eq2,eq3,eq4],[diff(r1,t,2),diff(theta1,t,2),diff(r2,t,2),diff(theta2,t,2)])$
+
+ans:part(eqs,1)$
+eqr1:part(ans,1)$
+eqtheta1:part(ans,2)$
+eqr2:part(ans,3)$
+eqtheta2:part(ans,4)$
+
+
+eqr1:ratsimp(eqr1)$
+eqr1:trigsimp(eqr1)$
+eqtheta1:ratsimp(eqtheta1)$
+eqtheta1:trigsimp(eqtheta1)$
+eqr2:ratsimp(eqr2)$
+eqr2:trigsimp(eqr2)$
+eqtheta2:ratsimp(eqtheta2)$
+eqtheta2:trigsimp(eqtheta2)$
+
+eqr1Original: eqr1$
+eqr2Original: eqr2$
+eqtheta1Original: eqtheta1$
+eqtheta2Original: eqtheta2$
+
+eqr1:subst(f[5],diff(r1,t,2),eqr1)$
+eqr1:subst(f[6],diff(theta1,t,2),eqr1)$
+eqr1:subst(f[7],diff(r2,t,2),eqr1)$
+eqr1:subst(f[8],diff(theta2,t,2),eqr1)$
+eqr1:subst(x[5],diff(r1,t),eqr1)$
+eqr1:subst(x[6],diff(theta1,t),eqr1)$
+eqr1:subst(x[7],diff(r2,t),eqr1)$
+eqr1:subst(x[8],diff(theta2,t),eqr1)$
+eqr1:subst(x[1],r1,eqr1)$
+eqr1:subst(x[2],theta1,eqr1)$
+eqr1:subst(x[3],r2,eqr1)$
+eqr1:subst(x[4],theta2,eqr1)$
+
+eqtheta1:subst(f[5],diff(r1,t,2),eqtheta1)$
+eqtheta1:subst(f[6],diff(theta1,t,2),eqtheta1)$
+eqtheta1:subst(f[7],diff(r2,t,2),eqtheta1)$
+eqtheta1:subst(f[8],diff(theta2,t,2),eqtheta1)$
+eqtheta1:subst(x[5],diff(r1,t),eqtheta1)$
+eqtheta1:subst(x[6],diff(theta1,t),eqtheta1)$
+eqtheta1:subst(x[7],diff(r2,t),eqtheta1)$
+eqtheta1:subst(x[8],diff(theta2,t),eqtheta1)$
+eqtheta1:subst(x[1],r1,eqtheta1)$
+eqtheta1:subst(x[2],theta1,eqtheta1)$
+eqtheta1:subst(x[3],r2,eqtheta1)$
+eqtheta1:subst(x[4],theta2,eqtheta1)$
+
+eqr2:subst(f[5],diff(r1,t,2),eqr2)$
+eqr2:subst(f[6],diff(theta1,t,2),eqr2)$
+eqr2:subst(f[7],diff(r2,t,2),eqr2)$
+eqr2:subst(f[8],diff(theta2,t,2),eqr2)$
+eqr2:subst(x[5],diff(r1,t),eqr2)$
+eqr2:subst(x[6],diff(theta1,t),eqr2)$
+eqr2:subst(x[7],diff(r2,t),eqr2)$
+eqr2:subst(x[8],diff(theta2,t),eqr2)$
+eqr2:subst(x[1],r1,eqr2)$
+eqr2:subst(x[2],theta1,eqr2)$
+eqr2:subst(x[3],r2,eqr2)$
+eqr2:subst(x[4],theta2,eqr2)$
+
+eqtheta2:subst(f[5],diff(r1,t,2),eqtheta2)$
+eqtheta2:subst(f[6],diff(theta1,t,2),eqtheta2)$
+eqtheta2:subst(f[7],diff(r2,t,2),eqtheta2)$
+eqtheta2:subst(f[8],diff(theta2,t,2),eqtheta2)$
+eqtheta2:subst(x[5],diff(r1,t),eqtheta2)$
+eqtheta2:subst(x[6],diff(theta1,t),eqtheta2)$
+eqtheta2:subst(x[7],diff(r2,t),eqtheta2)$
+eqtheta2:subst(x[8],diff(theta2,t),eqtheta2)$
+eqtheta2:subst(x[1],r1,eqtheta2)$
+eqtheta2:subst(x[2],theta1,eqtheta2)$
+eqtheta2:subst(x[3],r2,eqtheta2)$
+eqtheta2:subst(x[4],theta2,eqtheta2)$
+
+string(eqr1);
+string(eqtheta1);
+string(eqr2);
+string(eqtheta2);

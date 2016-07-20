@@ -1,0 +1,18 @@
+depends(theta, t)$
+
+x: r*sin(theta)$
+y: r*cos(theta)$
+xdot: diff(x,t)$
+ydot: diff(y,t)$
+
+l: 1/2*m*(xdot^2+ydot^2)+m*g*y$
+l: trigsimp(l)$
+
+term1: diff(l, diff(theta,t))$
+term1a: diff(term1, t)$
+term2: diff(l, theta)$
+eq: term1a-term2$
+
+eqtheta: solve(eq, diff(theta,t,2))$
+
+string(eqtheta);

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="j3d-1_5_2-linux-amd64/lib/ext/j3dcore.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="java-pendulum-simulations/j3d-1_5_2-linux-amd64/lib/amd64"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="j3d-1_5_2-linux-amd64/lib/ext/j3dutils.jar"/>
+	<classpathentry kind="lib" path="j3d-1_5_2-linux-amd64/lib/ext/vecmath.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

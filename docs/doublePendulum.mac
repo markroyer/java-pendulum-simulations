@@ -1,0 +1,59 @@
+depends([theta1, theta2], t)$
+
+x1: r1*sin(theta1)$
+y1: r1*cos(theta1)$
+x2: x1+r2*sin(theta2)$
+y2: y1+r2*cos(theta2)$
+
+x1dot: diff(x1,t)$
+y1dot: diff(y1,t)$
+x2dot: diff(x2,t)$
+y2dot: diff(y2,t)$
+
+l1: 1/2*m1*(x1dot^2+y1dot^2)+m1*g*y1$
+l2: 1/2*m2*(x2dot^2+y2dot^2)+m2*g*y2$
+l: l1+l2$
+l: trigsimp(l)$
+
+remove(theta2,dependency)$
+term1: diff(l,diff(theta1,t))$
+term2: diff(l,theta1)$
+depends([theta1,theta2],t)$
+term1a: diff(term1, t)$
+eq1: term1a-term2$
+
+remove(theta1, dependency)$
+term1: diff(l, diff(theta2,t))$
+term2: diff(l, theta2)$
+depends([theta1,theta2],t)$
+term1a: diff(term1,t)$
+eq2: term1a-term2$
+
+eqs: solve([eq1,eq2],[diff(theta1,t,2),diff(theta2,t,2)])$
+
+ans: part(eqs,1)$
+eqtheta1: part(ans,1)$
+eqtheta2: part(ans,2)$
+
+eqtheta1: ratsimp(eqtheta1)$
+eqtheta1: trigsimp(eqtheta1)$
+eqtheta2: ratsimp(eqtheta2)$
+eqtheta2: trigsimp(eqtheta2)$
+
+eqtheta1: subst(f[2],diff(theta1,t,2),eqtheta1)$
+eqtheta2: subst(f[4],diff(theta2,t,2),eqtheta2)$
+
+eqtheta1: subst(x[2],diff(theta1,t), eqtheta1)$
+eqtheta2: subst(x[2],diff(theta1,t), eqtheta2)$
+
+eqtheta1: subst(x[4],diff(theta2,t), eqtheta1)$
+eqtheta2: subst(x[4],diff(theta2,t), eqtheta2)$
+
+eqtheta1: subst(x[1],theta1, eqtheta1)$
+eqtheta2: subst(x[1],theta1, eqtheta2)$
+
+eqtheta1: subst(x[3],theta2, eqtheta1)$
+eqtheta2: subst(x[3],theta2, eqtheta2)$
+
+string(eqtheta1);
+string(eqtheta2);

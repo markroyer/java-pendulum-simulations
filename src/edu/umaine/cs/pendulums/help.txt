@@ -1,0 +1,51 @@
+Pendulum Simulation
+By Mark Royer
+
+Select the desired simulation by clicking on Pendulum, Spring Pendulum, Double 
+Pendulum, or Double Spring Pendulum.
+
+Change the initial angle and length of the rod, the mass of the pendulum 
+head/joint, and spring k amount by editing the spinner values.
+
+a1: initial angle of inner pendulum
+a2: initial angle of outer pendulum
+l1: length of inner pendulum
+l2: length of outer pendulum
+m1: mass of inner pendulum
+m2: mass of outer pendulum
+k1: spring constant for inner pendulum
+k2: spring constant for outer pendulum  
+
+Alternatively, if the user hovers over the simulation widow, then he or she may
+use the following hot keys to increase or decrease the values.
+
+value:  - / +
+ 
+a1:     a / A
+a2:     s / S
+l1:     d / D
+l2:     f / F
+m1:     z / Z
+m2:     x / X
+k1:     c / C
+k2:     v / V
+
+Quit application: q
+Restart current simulation: r
+
+A user may save the current values to the drop down menu.  When the values are 
+selected the simulation is setup (but not started) with those values.
+
+To start the simulation the user can push the "Reset/Start" button.
+
+A user can pause/resume the simulation by selecting or deselecting the "Run Sim"
+check box.
+
+A user can pause/resume the rotating by selecting or deselecting the "Rotate"
+check box.
+
+A user can decrease/increase the simulation speed by using the "Speed" spinner.
+
+A user may rotate the world by click and dragging with the left mouse button.
+
+A user may also zoom-in or zoom-out by using the mouse wheel.
