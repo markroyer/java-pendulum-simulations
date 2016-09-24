@@ -1,2 +1,4 @@
 # java-pendulum-simulations
-A pendulum simulation program written in Java using Java3d.
+
+This Android App is currently a proof-of-concept program that simulates a pendulum in Java using Java3d.
+
